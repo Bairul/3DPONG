@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BallMovement : MonoBehaviour
 {
-    private float moveSpeed = 15f;
+    private float moveSpeed = 20f;
     private Rigidbody rb;
     
 
@@ -21,5 +21,15 @@ public class BallMovement : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         moveSpeed = -moveSpeed;
+        string hitName = collision.gameObject.name;
+
+        if (hitName == "EnemyEndWall")
+        {
+            Debug.Log("Enemy Wall Hitt");
+        }
+        else if (hitName == "PlayerEndWall")
+        {
+            Debug.Log("Player Wall Hitt");
+        }
     }
 }
