@@ -16,6 +16,10 @@ public class BallMovement : MonoBehaviour
     void Update()
     {
         rb.linearVelocity = transform.forward * moveSpeed;
-        
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        moveSpeed = -moveSpeed;
     }
 }

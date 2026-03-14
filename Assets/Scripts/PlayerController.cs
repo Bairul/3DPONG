@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.freezeRotation = true;
         rigidbody.useGravity = false;
+        rigidbody.constraints = RigidbodyConstraints.FreezePositionZ;
     }
 
     void OnEnable()
