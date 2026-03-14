@@ -21,15 +21,5 @@ public class BallMovement : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         moveSpeed = -moveSpeed;
-        string hitName = collision.gameObject.name;
-
-        if (hitName == "EnemyEndWall")
-        {
-            Debug.Log("Enemy Wall Hitt");
-        }
-        else if (hitName == "PlayerEndWall")
-        {
-            Debug.Log("Player Wall Hitt");
-        }
     }
 }
