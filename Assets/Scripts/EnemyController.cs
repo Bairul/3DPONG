@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : PaddleBase
 {
     [SerializeField] private Transform ball;
     private float enemyMoveSpeed = 5f;

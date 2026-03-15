@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class BallMovement : MonoBehaviour
+public class BallMovement : MonoBehaviour, IBallBehavior
 {
     private float moveSpeed = 20f;
     private Rigidbody rb;
@@ -28,9 +28,9 @@ public class BallMovement : MonoBehaviour
         rb.linearVelocity = transform.forward * moveSpeed;
     }
 
-    void OnCollisionEnter(Collision collision)
+    public void OnHitByPaddle(Vector3 direction)
     {
-        moveSpeed = -moveSpeed;
+        rb.linearVelocity = direction * moveSpeed;
     }
 
     public void ResetBall(bool playerWin)
