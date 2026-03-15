@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BallMovement : MonoBehaviour
+public class BallMovement : MonoBehaviour, IBallBehavior
 {
     private float moveSpeed = 20f;
     private Rigidbody rb;
@@ -11,15 +11,11 @@ public class BallMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         rb.useGravity = false;
-    }
-
-    void Update()
-    {
         rb.linearVelocity = transform.forward * moveSpeed;
     }
 
-    void OnCollisionEnter(Collision collision)
+    public void OnHitByPaddle(Vector3 direction)
     {
-        moveSpeed = -moveSpeed;
+        rb.linearVelocity = direction * moveSpeed;
     }
 }
