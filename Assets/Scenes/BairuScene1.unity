@@ -346,6 +346,7 @@ GameObject:
   - component: {fileID: 224689506}
   - component: {fileID: 224689505}
   - component: {fileID: 224689504}
+  - component: {fileID: 224689508}
   m_Layer: 0
   m_Name: EnemyPlatform
   m_TagString: Untagged
@@ -360,7 +361,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 224689503}
-  m_Material: {fileID: 13400000, guid: 225644c05be9d4f42a774594ea60d5fc, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1437,7 +1438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053127041}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17101006, y: 0.17101006, z: -0.030153684, w: 0.96984637}
+  m_LocalRotation: {x: 0.21315138, y: 0.169532, z: -0.037584335, w: 0.96146387}
   m_LocalPosition: {x: -5, y: 15, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2142,6 +2143,7 @@ BoxCollider:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1053127045}
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 1691301681}

@@ -23,7 +23,6 @@ public class ScoreManager : MonoBehaviour
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void AddPlayerScore(int amount = 1)

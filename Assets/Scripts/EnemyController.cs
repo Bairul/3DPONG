@@ -1,0 +1,18 @@
+using UnityEngine;
+
+public class EnemyController : MonoBehaviour
+{
+    [SerializeField] private Transform ball;
+    private float enemyMoveSpeed = 5f;
+
+    void Update()
+    {
+        Vector3 targetPos = new Vector3(
+            ball.position.x,
+            ball.position.y,
+            transform.position.z
+        );
+
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, enemyMoveSpeed * Time.deltaTime);    
+    }
+}
