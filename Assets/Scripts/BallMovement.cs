@@ -9,7 +9,6 @@ public class BallMovement : MonoBehaviour, IBallBehavior
     private Rigidbody rb;
     private Vector3 startPosition;
 
-    private bool isInPlay;
     private float resetDelay = 1.5f;
 
     void Start()
@@ -19,13 +18,8 @@ public class BallMovement : MonoBehaviour, IBallBehavior
         rb.useGravity = false;
 
         startPosition = transform.position;
-        ResetBall(true);
-    }
-
-    void FixedUpdate()
-    {
-        if (!isInPlay) return;
         rb.linearVelocity = transform.forward * moveSpeed;
+        
     }
 
     public void OnHitByPaddle(Vector3 direction)
@@ -33,19 +27,16 @@ public class BallMovement : MonoBehaviour, IBallBehavior
         rb.linearVelocity = direction * moveSpeed;
     }
 
-    public void ResetBall(bool playerWin)
+    public void ResetBall(bool isPlayerWin)
     {
-        isInPlay = false;
-        rb.linearVelocity = Vector3.zero;
-        transform.SetPositionAndRotation(startPosition, Quaternion.Euler(Vector3.zero));
-        StartCoroutine(DelayedLaunch(playerWin));
+        StartCoroutine(DelayedLaunch(isPlayerWin));
     }
 
-    private IEnumerator DelayedLaunch(bool toPlayerSide)
+    private IEnumerator DelayedLaunch(bool isPlayerWin)
     {
+        transform.position = startPosition;
+        rb.linearVelocity = Vector3.zero;
         yield return new WaitForSeconds(resetDelay);
-        isInPlay = true;
-        moveSpeed = Math.Abs(moveSpeed);
-        moveSpeed *= toPlayerSide ? 1: -1;
+        rb.linearVelocity = (isPlayerWin ? Vector3.forward : Vector3.back) * moveSpeed;
     }
 }
