@@ -346,7 +346,6 @@ GameObject:
   - component: {fileID: 224689506}
   - component: {fileID: 224689505}
   - component: {fileID: 224689504}
-  - component: {fileID: 224689508}
   m_Layer: 0
   m_Name: EnemyPlatform
   m_TagString: Untagged
@@ -1491,6 +1490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoalController
   isPlayerSideGoal: 0
+  ball: {fileID: 845632298}
 --- !u!65 &1056605646
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2118,6 +2118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GoalController
   isPlayerSideGoal: 1
+  ball: {fileID: 845632298}
 --- !u!65 &2037651596
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2150,6 +2151,5 @@ SceneRoots:
   - {fileID: 1909532434}
   - {fileID: 1398990408}
   - {fileID: 845632303}
-  - {fileID: 1053127045}
   - {fileID: 1954249516}
   - {fileID: 44737896}

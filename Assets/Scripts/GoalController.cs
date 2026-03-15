@@ -4,6 +4,7 @@ using UnityEngine;
 public class GoalController : MonoBehaviour
 {
     public bool isPlayerSideGoal = false;
+    public BallMovement ball;
 
     void Awake()
     {
@@ -21,8 +22,14 @@ public class GoalController : MonoBehaviour
         }
  
         if (isPlayerSideGoal)
+        {
             ScoreManager.Instance.AddEnemyScore();
-        else
+        } else
+        {
             ScoreManager.Instance.AddPlayerScore();
+        }
+            
+
+        if (ball != null) ball.ResetBall(!isPlayerSideGoal);
     }
 }
