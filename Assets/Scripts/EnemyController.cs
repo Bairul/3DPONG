@@ -3,7 +3,7 @@ using UnityEngine;
 public class EnemyController : PaddleBase
 {
     [SerializeField] private Transform ball;
-    private float enemyMoveSpeed = 2f;
+    public float enemyMoveSpeed = 4f;
 
     void Update()
     {
