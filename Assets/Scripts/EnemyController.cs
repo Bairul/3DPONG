@@ -4,6 +4,14 @@ public class EnemyController : PaddleBase
 {
     [SerializeField] private Transform ball;
     public float enemyMoveSpeed = 4f;
+    private new Rigidbody rigidbody;
+    
+    void Awake()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+        rigidbody.useGravity = false;
+        rigidbody.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+    }
 
     void Update()
     {
