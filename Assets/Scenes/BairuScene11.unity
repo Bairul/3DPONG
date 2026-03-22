@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 40661051}
   - component: {fileID: 40661050}
   - component: {fileID: 40661049}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlaneLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40661047}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ac3f4f90f43271c4299a894e5e7978b9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -346,6 +346,8 @@ GameObject:
   - component: {fileID: 224689506}
   - component: {fileID: 224689505}
   - component: {fileID: 224689504}
+  - component: {fileID: 224689508}
+  - component: {fileID: 224689509}
   m_Layer: 0
   m_Name: EnemyPlatform
   m_TagString: EnemyPlatform
@@ -458,7 +460,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a726ec2f5b4584d8c6561c943285cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
+  sideMultiplier: 4
   ball: {fileID: 845632303}
+  enemyMoveSpeed: 4
+--- !u!54 &224689509
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224689503}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 120
+  m_CollisionDetection: 0
 --- !u!1 &360277910
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,7 +911,7 @@ GameObject:
   - component: {fileID: 751594404}
   - component: {fileID: 751594403}
   - component: {fileID: 751594402}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlaneRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -909,7 +940,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751594400}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ac3f4f90f43271c4299a894e5e7978b9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1087,9 +1118,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 0
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!135 &845632300
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1537,7 +1568,7 @@ GameObject:
   - component: {fileID: 1230666717}
   - component: {fileID: 1230666716}
   - component: {fileID: 1230666715}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlaneTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1566,7 +1597,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1230666713}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ac3f4f90f43271c4299a894e5e7978b9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1683,7 +1714,7 @@ GameObject:
   - component: {fileID: 1420931961}
   - component: {fileID: 1420931960}
   - component: {fileID: 1420931959}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlaneBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1712,7 +1743,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420931957}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ac3f4f90f43271c4299a894e5e7978b9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1910,7 +1941,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa84a9fe5511fe4b89524113d768d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  sideMultiplier: 4
   moveSpeed: 10
+  acceleration: 10
+  deceleration: 15
+  wallCheckDistance: 1
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!54 &1531430556
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1947,7 +1985,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1691301681}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tunnel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

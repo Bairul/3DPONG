@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -16,6 +15,8 @@ public class BallMovement : MonoBehaviour, IBallBehavior
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         rb.useGravity = false;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
         startPosition = transform.position;
         rb.linearVelocity = transform.forward * moveSpeed;
@@ -37,6 +38,6 @@ public class BallMovement : MonoBehaviour, IBallBehavior
         transform.position = startPosition;
         rb.linearVelocity = Vector3.zero;
         yield return new WaitForSeconds(resetDelay);
-        rb.linearVelocity = (isPlayerWin ? Vector3.forward : Vector3.back) * moveSpeed;
+        rb.linearVelocity = (isPlayerWin ? Vector3.back : Vector3.forward) * moveSpeed;
     }
 }
