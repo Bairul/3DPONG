@@ -8,9 +8,13 @@ public class ScoreManager : MonoBehaviour
     public int scoreToWin = 7;
 
     public UnityEvent<int, int> onScoreChanged;
+    public UnityEvent onPlayerWin;
+    public UnityEvent onEnemyWin;
 
     private int playerScore;
     private int enemyScore;
+
+    private bool gameOver = false;
 
     public int PlayerScore => playerScore;
     public int OpponentScore => enemyScore;
@@ -27,22 +31,39 @@ public class ScoreManager : MonoBehaviour
 
     public void AddPlayerScore(int amount = 1)
     {
+        if (gameOver) return;
         playerScore += amount;
         NotifyListeners();
-        Debug.Log(playerScore + " " + enemyScore);
+        CheckWinCondition();
     }
  
     public void AddEnemyScore(int amount = 1)
     {
+        if (gameOver) return;
         enemyScore += amount;
         NotifyListeners();
-        Debug.Log(playerScore + " " + enemyScore);
+        CheckWinCondition();
+    }
+
+    private void CheckWinCondition()
+    {
+        if (playerScore >= scoreToWin)
+        {
+            gameOver = true;
+            onPlayerWin?.Invoke();
+        }
+        else if (enemyScore >= scoreToWin)
+        {
+            gameOver = true;
+            onEnemyWin?.Invoke();
+        }
     }
 
     public void ResetScores()
     {
         playerScore   = 0;
         enemyScore = 0;
+        gameOver = false;
         NotifyListeners();
     }
 
